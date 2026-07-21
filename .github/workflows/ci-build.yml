@@ -78,7 +78,7 @@ jobs:
           python build.py sdist
 
       - name: Save sdist as job artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: wxPythonPyRx-source
           path: dist/wxPythonPyRx-${{ steps.generate.outputs.version }}.tar.gz
@@ -143,7 +143,7 @@ jobs:
           persist-credentials: false
 
       - name: download CI source artifact
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v4
         with:
           name: wxPythonPyRx-source
           path: dist
@@ -191,7 +191,7 @@ jobs:
           pip uninstall --yes wxPythonPyRx
 
       - name: Save wheel as job artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         # Just Windows and MacOS for now, all we care about for Linux at this
         # point is that the build was successful.
         if: runner.os != 'Linux'
@@ -207,14 +207,14 @@ jobs:
 
     environment:
       name: pypi
-      url: https://pypi.org/p/wxPythonPyRx
+      url: https://pypi.org
 
     permissions:
       id-token: write
 
     steps:
     - name: Download all the dists
-      uses: actions/download-artifact@v8
+      uses: actions/download-artifact@v4
       with:
         pattern: wxPythonPyRx-*
         path: dist/
@@ -237,7 +237,7 @@ jobs:
 
     steps:
     - name: Download source distribution
-      uses: actions/download-artifact@v8
+      uses: actions/download-artifact@v4
       with:
         name: wxPythonPyRx-source
         path: dist
@@ -254,4 +254,3 @@ jobs:
       run: |
         gh release upload '${{ env.VERSION }}' dist/* \
           --repo '${{ github.repository }}'
-          

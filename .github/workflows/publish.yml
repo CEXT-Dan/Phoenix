@@ -1,6 +1,6 @@
 # Publishes files associated with a release to PyPI
 
-name: Publish to wxPython-PyRx package in PyPI 
+name: Publish to wxPythonPyRx package in PyPI 
 
 on:
   release:

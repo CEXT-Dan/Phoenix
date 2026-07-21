@@ -241,12 +241,6 @@ jobs:
       with:
         name: wxPythonPyRx-source
         path: dist
-    - name: Download docs and demo distributions
-      uses: actions/download-artifact@v8
-      with:
-        pattern: d*
-        path: dist
-        merge-multiple: true
     - name: Create GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}

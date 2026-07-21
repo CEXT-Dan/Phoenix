@@ -81,7 +81,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: wxPythonPyRx-source
-          path: dist/wxPythonPyRx-${{ steps.generate.outputs.version }}.tar.gz
+          path: dist/wxpythonpyrx-${{ steps.generate.outputs.version }}.tar.gz
 
 #---------------------------------------------------------------------------
 
@@ -143,7 +143,7 @@ jobs:
           persist-credentials: false
 
       - name: download CI source artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: wxPythonPyRx-source
           path: dist
@@ -186,7 +186,7 @@ jobs:
       - name: Simple smoke test
         run: |
           cd dist
-          pip install wxPythonPyRx-*.whl
+          pip install wxpythonpyrx-*.whl
           python -c "import wx; print(wx); print(wx.version()); print(wx.PlatformInfo)"
           pip uninstall --yes wxPythonPyRx
 
@@ -197,7 +197,8 @@ jobs:
         if: runner.os != 'Linux'
         with:
           name: wxPythonPyRx-wheel-${{ steps.init.outputs.canonical_id }}
-          path: dist/wxPythonPyRx-*.whl
+          path: dist/wxpythonpyrx-*.whl
+
 
   publish-to-pypi:
     name: Publish Python distribution to PyPI
@@ -214,7 +215,7 @@ jobs:
 
     steps:
     - name: Download all the dists
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         pattern: wxPythonPyRx-*
         path: dist/

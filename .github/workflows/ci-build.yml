@@ -52,6 +52,7 @@ jobs:
         with:
           submodules: 'recursive'
           fetch-depth: 0
+          fetch-tags: true
           filter: blob:none
           persist-credentials: false
 
@@ -81,7 +82,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: wxPythonPyRx-source
-          path: dist/wxPythonPyRx-${{ steps.generate.outputs.version }}.tar.gz
+          path: dist/wxPythonPyRx-demo-*.tar.gz
 
       - name: Create demo source distribution (sdist_demo)
         if: github.event_name == 'push'
@@ -190,7 +191,7 @@ jobs:
         run: |
           if [ -z "$CIBW_BUILD" ]; then
               cd dist
-          pip wheel -v wxPythonPyRx-${{ env.VERSION }}.tar.gz
+          pip wheel -v wxPythonPyRx-*.tar.gz
           else
               pip install cibuildwheel
               cibuildwheel dist/wxPythonPyRx-${{ env.VERSION }}.tar.gz --output-dir dist

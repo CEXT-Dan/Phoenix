@@ -1,7 +1,7 @@
 [project]
 name = "wxPythonPyRx"
-description = "Cross platform GUI toolkit for Python, \"Phoenix\" version"
-requires-python = ">= 3.10"
+description = "Cross platform GUI toolkit for Python, \"Phoenix-PyRx\" version"
+requires-python = ">= 3.14"
 authors = [
     { name = "Robin Dunn", email = "robin@alldunn.com" },
     { name = "Scott Talbert", email = "swt@techie.net" },
@@ -58,7 +58,7 @@ requires = [
     "cython >= 3.0.10",
     "requests >= 2.26.0",
     "sip == 6.12.0",
-    "typing-extensions; python_version < '3.11'",
+    "typing-extensions; python_version < '3.14'",
 ]
 build-backend = "setuptools.build_meta"
 
